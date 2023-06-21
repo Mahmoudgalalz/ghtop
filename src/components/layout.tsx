@@ -1,6 +1,6 @@
 export function Layout({children}:{children:JSX.Element}){
     return(
-        <section className="flex bg-gradient-to-t h-screen from-[#EB03FF] items-center relative to-[#3A0D84]">
+        <section className="flex bg-gradient-to-t h-screen from-[#EB03FF] items-center to-[#3A0D84]">
         <svg className="absolute" fill="none" height="100%" viewBox="0 0 400 400" width="100%" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_17_17)">
             <g filter="url(#filter0_f_17_17)">
