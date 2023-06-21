@@ -8,8 +8,6 @@ const LinkedinLink = () => {
 }
 
 export function Share(){
-    console.log(LinkedinLink())
-    console.log(TwitterLink())
     return (
         <>
         <div className='mt-4 gap-2 items-center flex font-bold justify-end'>
