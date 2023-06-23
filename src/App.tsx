@@ -3,6 +3,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import {Helmet} from "react-helmet";
+import { User } from './pages/user';
+import { Waiting } from './pages/waiting';
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -11,11 +15,18 @@ function App() {
     },
     {
       path:"/:id",
-      element:<Main/>,
+      element:<User/>,
+    },
+    {
+      path:"/waiting",
+      element:<Waiting/>
     }
   ])
   return (
     <>
+    <Helmet>
+      <title>GHtop</title>
+    </Helmet>
       <RouterProvider router={router} />
     </>
   )
