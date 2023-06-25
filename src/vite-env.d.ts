@@ -10,21 +10,12 @@ interface IUser{
     ]
 }
 
-interface IResponseGH implements object{
-    [x: string]: any
-    //what I only need from github response
+type TRepos={
     name:string,
-    fork:boolean,
     language:string,
-    languages_url:string
+    languages?:TLang[]
 }
-
-interface ILangValues {
-    totalSize:number,
-    values:ILang[]
-}
-
-interface ILang{
+type TLang={
     name:string,
-    size:number
+    fileSize:number
 }

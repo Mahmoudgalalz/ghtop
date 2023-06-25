@@ -1,9 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Layout } from '../components/layout';
 import { UserCard } from '../components/userCard';
-import { fetchData } from '../utils/utils';
+import { fetchData } from '../utils/data';
 import { useEffect } from 'react';
-import { Star } from '../components/info';
 
 export function User(){
     const {id} = useParams()
@@ -17,7 +16,6 @@ export function User(){
     return (
         <Layout>
             <>
-            <Star/>
             <UserCard/>
             </>
         </Layout>

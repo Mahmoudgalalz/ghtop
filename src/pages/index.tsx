@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { validate_user } from "../utils/utils";
+import { validate_user } from "../utils/data";
 import useInput from "../hooks/input";
 import { useState } from "react";
 import { Layout } from "../components/layout";
@@ -13,7 +13,7 @@ export function Main(){
         e.preventDefault();
         const validate:number = await validate_user(userHandle.value)
         if(validate === 200){
-          if(canRequest(userHandle.value))
+          if(!canRequest(userHandle.value))
             navigate(userHandle.value)
           else navigate('/waiting')
         }
