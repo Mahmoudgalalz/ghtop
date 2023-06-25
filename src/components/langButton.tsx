@@ -26,7 +26,6 @@ export function LangButton(){
                 <li className="flex justify-between">Bugchat <span>2000</span></li>
                 <li className="flex justify-between">Bugchat <span>2000</span></li>
                 <li className="flex justify-between">Bugchat <span>2000</span></li>
-
                 </ul>
             </div>
         </button>
