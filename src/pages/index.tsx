@@ -13,7 +13,7 @@ export function Main(){
         e.preventDefault();
         const validate:number = await validate_user(userHandle.value)
         if(validate === 200){
-          if(!canRequest(userHandle.value))
+          if(canRequest(userHandle.value))
             navigate(userHandle.value)
           else navigate('/waiting')
         }

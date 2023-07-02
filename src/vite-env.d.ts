@@ -9,7 +9,14 @@ interface IUser{
         }
     ]
 }
-
+type TTop={
+    lang:TLang,
+    repos:string[]
+}
+type zRepo={
+    name:string,
+    lang:string
+}
 type TRepos={
     name:string,
     language:string,
@@ -19,3 +26,9 @@ type TLang={
     name:string,
     fileSize:number
 }
+
+type userData = {
+    username:string,
+    data:TTop[]
+}
+

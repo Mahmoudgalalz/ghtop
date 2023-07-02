@@ -1,11 +1,12 @@
 import { cache } from "./cache";
 import axios from 'axios'
+import { TopData } from "./utils";
 export async function validate_user(user:string):Promise<number>{
     const res = await fetch(`https://api.github.com/users/${user}`)
     return res.status
 }
 
-export async function fetchData(user: string): Promise<TRepos[]> {
+export async function fetchData(user: string): Promise<TTop[]> {
     if (!cache(user)) {
       const res = await axios.get(`https://api.github.com/users/${user}/repos?sort=created&per_page=50&type=owner`);
       const data = res.data;
@@ -17,17 +18,18 @@ export async function fetchData(user: string): Promise<TRepos[]> {
     }
   }
   
-  export async function filterData(results: any): Promise<TRepos[]> {
+  export async function filterData(results: any): Promise<TTop[]> {
     const Repos: TRepos[] = [];
-    await Promise.all(
+    await Promise.allSettled(
       results.map(async (repo: any) => {
-        if (!repo.fork) {
+        if (!repo.fork && repo.language) {
           const langs = await fetchLangs(repo.languages_url);
           Repos.push({ name: repo.name, language: repo.language, languages: langs });
         }
       })
     );
-    return Repos;
+    const data = TopData(Repos)
+    return data;
   }
   
   function fetchLangs(lang_url: string): Promise<TLang[]> {
