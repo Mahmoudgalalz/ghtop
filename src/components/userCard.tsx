@@ -2,8 +2,7 @@ import { LangButton } from "./langButton";
 import { Share } from "./share";
 
 export function UserCard({username,data}:userData){
-    const topData = Array.from(Object.entries(data))
-    console.log(topData)
+    console.log(data)
     return (
         <div className="flex flex-col p-4 w-[30rem] mx-4 sm:mx-auto rounded-xl z-20 justify-center backdrop-blur bg-white/50 hover:bg-white/70 duration-300">
             <div className="flex flex-col items-center">
@@ -16,19 +15,11 @@ export function UserCard({username,data}:userData){
                     <p>LOC</p>
                 </div>
                 <div className="mt-2 grid grid-cols-1 gap-2">
-                        <>
-                        {data.map(data =>{
-                            return <LangButton data={{
-                                lang:data.lang,
-                                repos:data.repos
-                            }}
-                            idx={0}/>
-                        })}
-                        </>
-                    
-                    
-                    {/* <LangButton/> */}
-                    {/* <LangButton/> */}
+                    {
+                        data.map((element,idx)=>{
+                            return <LangButton idx={idx+1} data={element}/>
+                        })
+                    }
                 </div>
             </div>
             <Share/>

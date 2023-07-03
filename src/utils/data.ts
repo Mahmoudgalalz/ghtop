@@ -11,10 +11,11 @@ export async function fetchData(user: string): Promise<TTop[]> {
       const res = await axios.get(`https://api.github.com/users/${user}/repos?sort=created&per_page=50&type=owner`);
       const data = res.data;
       const filtered = await filterData(data);
-      cache(user, filtered);
+      cache(user, Array.from(Object.entries(filtered)));
       return filtered;
     } else {
-      return cache(user);
+      //@ts-ignore
+      return cache(user)
     }
   }
   

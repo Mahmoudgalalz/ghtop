@@ -9,7 +9,15 @@ interface IUser{
         }
     ]
 }
+const TTOP:TTop[] = [{
+    lang:{name:'',fileSize=0},
+    repos:[]
+}]
 type TTop={
+    lang:TLang,
+    repos:string[]
+}
+interface ITop {
     lang:TLang,
     repos:string[]
 }

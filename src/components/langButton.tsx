@@ -23,9 +23,16 @@ export function LangButton({data,idx}:{data:TTop,idx:number}){
             </div>
             <div className={`px-6 pt-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ${open ? "max-h-40" : "max-h-0"}`}>
                 <ul className="flex flex-col justify-start text-start">
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
+                    {
+                        !data.repos.length && <li className="flex justify-between">Common</li>
+                    }
+                    {   
+                        data.repos.map((repo,idx)=>{
+                            if(idx<3){
+                                return <li className="flex justify-between">{repo}</li>
+                            }
+                        })
+                    }
                 </ul>
             </div>
         </button>
@@ -39,9 +46,17 @@ export function LangButton({data,idx}:{data:TTop,idx:number}){
             </div>
             <div className={`px-2 pt-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ${open ? "max-h-40" : "max-h-0"}`}>
                 <ul className="flex flex-col justify-start text-start">
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
-                <li className="flex justify-between">Bugchat <span>2000</span></li>
+                    {
+                        !data.repos.length && <li className="flex justify-between">Common</li>
+                        
+                    }
+                    {   
+                        data.repos.map((repo,idx)=>{
+                            if(idx<3){
+                                return <li className="flex justify-between">{repo}</li>
+                            }
+                        })
+                    }
                 </ul>
             </div>
         </button>

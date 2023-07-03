@@ -1,11 +1,3 @@
-// Want to cache every request data, samply we have to ways
-// first to cache the request then maniplate the data 
-
-// the data will be cached with the handle
-/*
-    The payload to cache is the 
-*/
-
 function compareDate(d1:Date,d2:Date,Callback:Function):boolean{
     if(d1.getTime() < d2.getTime())
         return Callback();
@@ -46,7 +38,7 @@ export function cache(handle:string, data?:object){
         }
         else{
             const data = localStorage.getItem(handle) || '{}'
-            return JSON.parse(data);
+            return getCachedData(data);
         }
     }
     else {
@@ -54,6 +46,13 @@ export function cache(handle:string, data?:object){
     }
     
     
+}
+
+function getCachedData(data:string):TTop[]{
+    const res = JSON.parse(data);
+    delete res.expiry
+    const min:TTop[] = Array.from(Object.entries(res)).flat(4).filter(ele=> typeof ele != 'string') as TTop[]
+    return min
 }
 function cacheData(handle:string,data:object){
     const dataWithTime = appendTime(data)
