@@ -9,14 +9,12 @@ export function User(){
     const {id} = useParams()
     const [userData,setUserData] = useState<userData>(defaultData);
     useEffect(()=>{
-        async function dd(){
-                // @ts-nocheck
+        async function data(){
                 const res = await fetchData(id);
-                // @ts-nocheck
                 const data:userData = {username:id,data:res}
                 setUserData(data);
             }
-        dd()
+        data()
     },[id])
     return (
         <Layout>

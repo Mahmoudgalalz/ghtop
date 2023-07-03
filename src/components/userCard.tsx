@@ -2,7 +2,6 @@ import { LangButton } from "./langButton";
 import { Share } from "./share";
 
 export function UserCard({username,data}:userData){
-    console.log(data)
     return (
         <div className="flex flex-col p-4 w-[30rem] mx-4 sm:mx-auto rounded-xl z-20 justify-center backdrop-blur bg-white/50 hover:bg-white/70 duration-300">
             <div className="flex flex-col items-center">
