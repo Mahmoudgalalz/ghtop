@@ -8,7 +8,7 @@ jobs:
     name: Build the code
     steps:
       - name: checkout the project
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       - name: install deps
         uses: actions/setup-node@v3
         with:
