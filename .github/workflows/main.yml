@@ -20,7 +20,7 @@ jobs:
          npm run build
          
       - name: deploying to surge
-        uses: mahmoudgalalz/surge-action@v0.1
+        uses: mahmoudgalalz/surge-action@v0.1.1
         with:
           auth-token: ${{ secrets.SURGE_TOKEN }}
           domain: 'ghtop.surge.sh'
