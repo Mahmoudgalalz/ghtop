@@ -15,6 +15,7 @@ jobs:
           node-version: v16.x
       - name: build the project
         run: |
+         npm install -g pnpm
          pnpm i
          npm run build
          
