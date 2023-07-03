@@ -25,3 +25,5 @@ jobs:
           auth-token: ${{ secrets.SURGE_TOKEN }}
           domain: 'ghtop.surge.sh'
           path: './dist'
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
