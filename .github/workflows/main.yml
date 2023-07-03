@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build the code
+    steps:
+      - name: checkout the project
+        uses: action/checkout@v3
+      - name: install deps
+        uses: actions/setup-node@v3
+        with:
+          node-version: v16.x
+      - name: build the project
+        run: |
+         pnpm i
+         npm run build
+         
+      - name: deploying to surge
+        uses: mahmoudgalalz/surge-action@v0.1
+        with:
+          auth-token: ${{ secrets.SURGE_TOKEN }}
+          domain: 'ghtop.surge.sh'
+          path: './dist'
