@@ -10,12 +10,14 @@ export function User(){
     const [userData,setUserData] = useState<userData>(defaultData);
     useEffect(()=>{
         async function dd(){
+                // @ts-nocheck
                 const res = await fetchData(id);
+                // @ts-nocheck
                 const data:userData = {username:id,data:res}
                 setUserData(data);
             }
         dd()
-    },[])
+    },[id])
     return (
         <Layout>
             <>

@@ -8,5 +8,7 @@ export function Star(){
     )
 }
 export function why(){
-    
+    return (
+        <></>
+    )
 }

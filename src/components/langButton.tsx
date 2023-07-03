@@ -7,7 +7,7 @@ export function LangButton({data,idx}:{data:TTop,idx:number}){
     useEffect(()=>{
         if(isTouchDevice())
             setTouch(true)
-    })
+    },[])
     const handleClick = ()=>{
         if(open){
             setOpen(false)

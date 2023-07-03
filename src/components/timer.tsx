@@ -34,7 +34,7 @@ export function Timer(){
     if(!countdown){
         setTimerRunning(false)
     }
-  },[countdown])
+  },[countdown,calculateTimeRemaining])
     return (
         <Link to={"/"} className="flex justify-center">
             <button disabled={timerRunning} className="mt-6 hover:shadow-xl duration-300 bg-white p-2 rounded-lg disabled:bg-gray-900/50 disabled:text-gray-800/90">
