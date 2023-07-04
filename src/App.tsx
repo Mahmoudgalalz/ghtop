@@ -24,9 +24,6 @@ function App() {
   ])
   return (
     <>
-    <Helmet>
-      <title>GHtop</title>
-    </Helmet>
       <RouterProvider router={router} />
     </>
   )
