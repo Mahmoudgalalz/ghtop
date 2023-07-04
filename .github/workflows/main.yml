@@ -20,7 +20,7 @@ jobs:
          npm run build
          
       - name: deploying to surge
-        uses: mahmoudgalalz/surge-action@v0.1.3
+        uses: mahmoudgalalz/surge-action@v0.1.4
         with:
           domain: 'ghtop.surge.sh'
           path: './dist'
