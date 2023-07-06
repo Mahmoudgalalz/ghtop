@@ -5,24 +5,15 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    name: Build the code
+    name: Bulid and deploy
     steps:
-      - name: checkout the project
-        uses: actions/checkout@v3
-      - name: install deps
-        uses: actions/setup-node@v3
-        with:
-          node-version: v16.x
-      - name: build the project
-        run: |
-         npm install -g pnpm
-         pnpm i
-         npm run build
-         
-      - name: deploying to surge
-        uses: mahmoudgalalz/surge-action@v0.1.5
-        with:
-          domain: 'ghtop.surge.sh'
-          path: './dist'
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        - uses: actions/checkout@v3
+        - uses: mahmoudgalalz/surge-action@v1
+          with:
+            domain: 'ghtop.surge.sh'
+            path: './dist'
+            build: |
+              pnpm i
+              npm run build
+          env:
+            SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
