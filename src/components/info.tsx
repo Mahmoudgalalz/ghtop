@@ -12,7 +12,7 @@ export function why(){
     return (
         <>
         <Layout>
-            <div>Hello</div>
+            <div>This is why we do that</div>
         </Layout>
         </>
     )
