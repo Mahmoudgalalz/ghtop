@@ -1,29 +1,35 @@
+import { haveQuota, validate_user } from "./utils";
+
 function compareDate(d1:Date,d2:Date,Callback:Function):boolean{
     if(d1.getTime() < d2.getTime())
         return Callback();
     return false;
 }
 
-export function canRequest(key:string):boolean{
-    if(isCached(key)){
+export function canRequest(key:string,headers:Headers):boolean{
+    const quota = haveQuota(headers)
+    if(quota){
         return true;
     }
-    
-    const expire = new Date(Date.now()+3.6e+6)
-    const value = localStorage.getItem('request')
-    
-    if(!value){
-        localStorage.setItem('request',expire.toJSON())
+
+    if(isCached(key) && !quota){
         return true;
     }
     else{
-        return compareDate(new Date(value),new Date(Date.now()),()=>{
+        const expire = new Date(Date.now()+3.6e+6)
+        const value = localStorage.getItem('request')
+        
+        if(!value){
             localStorage.setItem('request',expire.toJSON())
             return true;
-        })
+        }
+        else{
+            return compareDate(new Date(value),new Date(Date.now()),()=>{
+                localStorage.setItem('request',expire.toJSON())
+                return true;
+            })
+        }
     }
-    
-
 }
 
 export function isCached(handle:string):boolean{
