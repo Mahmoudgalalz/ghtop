@@ -95,7 +95,7 @@ export function getCached(){
     const ignore = ['loglevel','request']
     const results:string[]=[]
     Object.entries(localStorage).map(([key])=>{            
-        if(!ignore.includes(key)){
+        if(!ignore.includes(key) && key.substring(0,3) != 'img'){
             results.push(key)
         }     
     })
