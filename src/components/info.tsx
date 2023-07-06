@@ -1,5 +1,6 @@
 import { Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Layout } from "./layout";
 
 export function Star(){
     return (
@@ -9,6 +10,10 @@ export function Star(){
 }
 export function why(){
     return (
-        <></>
+        <>
+        <Layout>
+            <div>Hello</div>
+        </Layout>
+        </>
     )
 }
