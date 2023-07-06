@@ -1,19 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { validate_user } from "../utils/data";
+import { validate_user } from "../utils/utils";
 import useInput from "../hooks/input";
 import { useState } from "react";
 import { Layout } from "../components/layout";
 import { canRequest } from "../utils/cache";
 import { Star } from "../components/info";
+
 export function Main(){
     const navigate = useNavigate()
     const userHandle = useInput("");
     const [validate,setValidate] = useState<boolean>(false)
     const handleClick = async (e: { preventDefault: () => void; })=>{
         e.preventDefault();
-        const validate:number = await validate_user(userHandle.value)
-        if(validate === 200){
-          if(canRequest(userHandle.value))
+        const validate = await validate_user(userHandle.value)
+        if(validate.status === 200){
+          if(canRequest(userHandle.value,validate.headers))
             navigate(userHandle.value)
           else navigate('/waiting')
         }
@@ -32,7 +33,7 @@ export function Main(){
                 <span className="md:block">Share it with the community</span>
               </p>
               <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-200">
-                All your github data in a more cool way to represent, with Open Graph Image 
+                All your github data in a more cool way to represent, this is a use-case to turn around rate-limits, and caching read the <a className="underline hover:text-white/50 font-bold" target="_blank" href="#">Article</a>
               </p>
             </div>
             <div className="flex flex-col justify-center gap-3 mt-10 sm:flex-row">
@@ -42,7 +43,7 @@ export function Main(){
                     <input id="username" aria-label="username" autoComplete="username" className="block w-full p-3 text-black bg-transparent border border-transparent appearance-none rounded-xl focus:border-slate-500 focus:outline-none focus:ring-slate-500 placeholder:text-slate-300 sm:text-sm" placeholder="Github Handle" required={true} type="name" {...userHandle}/>
                   </div>
                   <button onClick={handleClick} className="w-full lg:w-auto 0 active:bg-slate-600 active:text-white/80 before:transition-colors bg-white flex-none font-medium hover:bg-indigo-900 duration-300 hover:text-white inline-flex justify-center lg:ml-4 outline-2 outline-offset-2 px-6 py-2.5 relative rounded-xl text-indigo-500">
-                    <span>Get your GH top</span>
+                    <span>Top 3 Languages</span>
                   </button>
                   
                 </div>
