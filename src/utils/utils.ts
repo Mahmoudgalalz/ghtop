@@ -1,6 +1,15 @@
 export function isTouchDevice(){
     return window.ontouchstart !== undefined;
 }
+
+export async function validate_user(user:string):Promise<TValid>{
+    const res = await fetch(`https://api.github.com/users/${user}`)
+    return {status:res.status,headers:res.headers}
+}
+export function haveQuota(headers:Headers):boolean{
+    const consumed = parseInt(headers.get('X-Ratelimit-Remaining') || '1')
+    return consumed >= 20 
+}
 export function sumOfEach(repos:TRepos[]): Map<string, number>{
     const locMap: Map<string,number> = new Map<string,number>()
     Object.entries(repos).forEach(([key,repo])=>{
