@@ -1,12 +1,20 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LangButton } from "./langButton";
 import { Share } from "./share";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getImage } from "../utils/utils";
 
 export function UserCard({username,data}:userData){
     const ref = useRef<HTMLDivElement>(null)
-
+    const [img,setImg]= useState<string>('')    
+    useEffect(()=>{
+        async function avatar(){
+            const av = await getImage(username)
+            setImg(av);
+        }
+        avatar();
+    },[])
     return (
     <div className="mx-auto z-20">
         <Link to={'/'}>
@@ -17,7 +25,7 @@ export function UserCard({username,data}:userData){
         <div ref={ref} id='back' className="p-10 from-[#EB03FF] to-[#3A0D84]">
         <div className="flex flex-col p-4 w-[30rem] mx-4 sm:mx-auto rounded-xl z-20 justify-center backdrop-blur bg-white/50 hover:bg-white/70 duration-300 ">
             <div className="flex flex-col items-center">
-                <img className="inset-0 rounded-full w-24 h-24 shadow-lg" src={`https://github.com/${username}.png`} alt="top-user image"/>
+                <img className="inset-0 rounded-full w-24 h-24 shadow-lg" src={img} alt="top-user image"/>
                 <h1 className="font-semibold text-xl">{username}</h1>
             </div>
             <div>

@@ -6,6 +6,32 @@ export async function validate_user(user:string):Promise<TValid>{
     const res = await fetch(`https://api.github.com/users/${user}`)
     return {status:res.status,headers:res.headers}
 }
+export async function getImage(user:string):Promise<string>{
+    const value = localStorage.getItem(`img-${user}`)
+    if(!value){
+        let img = await RequestImage(user)
+        localStorage.setItem(`img-${user}`,img)
+    }
+    return localStorage.getItem(`img-${user}`) ?? ''
+}
+function RequestImage(user:string):Promise<string>{
+    return fetch(`https://api.github.com/users/${user}`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('User not found or API error');
+      }
+    })
+    .then((data) => {
+      const avatarUrl = data.avatar_url;
+      return avatarUrl;
+    })
+    .catch((error) => {
+      console.error('Error:', error.message);
+      return null;
+    });
+}
 export function haveQuota(headers:Headers):boolean{
     const consumed = parseInt(headers.get('X-Ratelimit-Remaining') || '1')
     return consumed >= 20 

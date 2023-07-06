@@ -15,7 +15,7 @@ export function Share({element}:{element:RefObject<HTMLDivElement>}){
         if (element.current === null) {
           return
         }
-        toJpeg(element.current, {filter:filter,cacheBust: true, imagePlaceholder:'/OG.png',includeQueryParams:true,style:{background:'radial-gradient(circle, rgba(124,41,189,1) 18%, rgba(186,47,171,1) 95%)'}})
+        toJpeg(element.current, {filter:filter,cacheBust: true, imagePlaceholder:'',includeQueryParams:true,style:{background:'radial-gradient(circle, rgba(124,41,189,1) 18%, rgba(186,47,171,1) 95%)'}})
           .then((dataUrl) => {
             const link = document.createElement('a')
             link.download = `${window.location.pathname}.jpeg`
