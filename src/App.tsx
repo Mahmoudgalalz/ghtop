@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import {Helmet} from "react-helmet";
 import { User } from './pages/user';
 import { Waiting } from './pages/waiting';
 

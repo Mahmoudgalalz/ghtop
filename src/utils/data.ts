@@ -1,10 +1,6 @@
 import { cache } from "./cache";
 import axios from 'axios'
 import { TopData } from "./utils";
-export async function validate_user(user:string):Promise<number>{
-    const res = await fetch(`https://api.github.com/users/${user}`)
-    return res.status
-}
 
 export async function fetchData(user: string): Promise<TTop[]> {
     if (!cache(user)) {

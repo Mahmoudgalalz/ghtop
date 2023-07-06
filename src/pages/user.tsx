@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Layout } from '../components/layout';
 import { UserCard } from '../components/userCard';
 import { fetchData } from '../utils/data';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Loader } from '../components/loading';
 

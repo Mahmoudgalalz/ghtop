@@ -1,4 +1,4 @@
-import { haveQuota, validate_user } from "./utils";
+import { haveQuota } from "./utils";
 
 function compareDate(d1:Date,d2:Date,Callback:Function):boolean{
     if(d1.getTime() < d2.getTime())

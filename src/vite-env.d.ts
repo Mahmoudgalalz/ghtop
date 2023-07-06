@@ -17,6 +17,15 @@ type TTop={
     lang:TLang,
     repos:string[]
 }
+type TValid={
+    status:number,
+    headers:Headers
+}
+
+type TRequest = {
+    status:boolean,
+    err?:string
+}
 interface ITop {
     lang:TLang,
     repos:string[]
