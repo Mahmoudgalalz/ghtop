@@ -8,7 +8,7 @@ jobs:
     name: Bulid and deploy
     steps:
         - uses: actions/checkout@v3
-        - uses: mahmoudgalalz/surge-action@v1
+        - uses: mahmoudgalalz/surge-action@v1.0
           with:
             domain: 'ghtop.surge.sh'
             path: './dist'
