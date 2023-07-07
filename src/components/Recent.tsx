@@ -10,7 +10,7 @@ export function Recent(){
             <div className="flex flex-col items-center">
                 <h1 className="font-semibold text-center text-xl">Most Recent requests</h1>
                 <p>You can access these requests without any limits</p>
-                <Link to={'/why'}>Limits? <span className="underline">Why</span></Link>
+                <Link to={'why'}>Limits? <span className="underline">Why</span></Link>
             </div>
             <Timer/>
         </div>

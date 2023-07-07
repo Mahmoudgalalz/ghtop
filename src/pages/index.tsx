@@ -33,7 +33,7 @@ export function Main(){
                 <span className="md:block">Share it with the community</span>
               </p>
               <p className="max-w-3xl mx-auto mt-4 lg:text-lg text-slate-200">
-                All your github data in a more cool way to represent, this is a use-case to turn around rate-limits, and caching read the <a className="underline hover:text-white/50 font-bold" target="_blank" href="#">Article</a>
+                All your github data in a more cool way to represent, this is a use-case to turn around rate-limits, and caching read the <a className="underline hover:text-white/50 font-bold" target="_blank" href="https://kroking.hashnode.dev/dealing-with-rate-limiting">Article</a>
               </p>
             </div>
             <div className="flex flex-col justify-center gap-3 mt-10 sm:flex-row">
